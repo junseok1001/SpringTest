@@ -1,4 +1,4 @@
-package com.sourjelly.springtest.ResponseRequestTest;
+package com.sourjelly.springtest.lifecycle;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class Test01Controller {
+public class TestController {
 
 
     @ResponseBody
