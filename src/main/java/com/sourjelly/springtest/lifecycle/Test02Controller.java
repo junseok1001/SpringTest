@@ -1,5 +1,7 @@
 package com.sourjelly.springtest.lifecycle;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -56,4 +58,35 @@ public class Test02Controller {
         return movieList;
 
     }
+
+    @RequestMapping("/2")
+    public List<NoteBoard> listResponse(){
+
+        List<NoteBoard> noteBoardList = new ArrayList<>();
+        NoteBoard noteBoard = new NoteBoard("hagulu", "안녕하세요 가입인사드립니다.",
+                "안녕하세요. 가입했어요. 앞으로 잘 부탁드립니다. 활동 열심히 하겠습니다");
+        noteBoardList.add(noteBoard);
+
+        noteBoard = new NoteBoard("bada", "헐 대박" , "오늘 목요일이 었어... 금요일인줄");
+        noteBoardList.add(noteBoard);
+
+        noteBoard = new NoteBoard("dulumary", "오늘 데이트 한 이야기 해드릴께요", "....");
+        noteBoardList.add(noteBoard);
+
+        return noteBoardList;
+    }
+
+    @RequestMapping("/3")
+    public ResponseEntity<NoteBoard> statusResponseTest(){
+
+        NoteBoard noteBoard = new NoteBoard("hagulu", "안녕하세요 가입인사드립니다.",
+                "안녕하세요. 가입했어요. 앞으로 잘 부탁드립니다. 활동 열심히 하겠습니다");
+        ResponseEntity<NoteBoard> entity = new ResponseEntity<>(noteBoard, HttpStatus.INTERNAL_SERVER_ERROR);
+
+        return entity;
+
+
+    }
+
+
 }
