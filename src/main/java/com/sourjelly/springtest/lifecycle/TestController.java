@@ -10,9 +10,21 @@ import java.util.Map;
 @Controller
 public class TestController {
 
-
     @ResponseBody
     @RequestMapping("/lifecycle/test01/1")
+    public String stringResponse(){
+        return "<html>\n" +
+                "   <head><title>테스트 프로젝트</title></head>\n" +
+                "   <body>\n" +
+                "       <h1>테스트 프로젝트 완성</h1>\n" +
+                "       <h3>해당 프로젝트를 통해서 문제 풀이를 진행 합니다.</h3>\n" +
+                "   </body>\n" +
+                "</html>";
+    }
+
+
+    @ResponseBody
+    @RequestMapping("/lifecycle/test01/2")
     public Map<String, Integer> Test01Response(){
 
         Map<String, Integer> score = new HashMap<>();
