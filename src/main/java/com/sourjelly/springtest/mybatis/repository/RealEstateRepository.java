@@ -1,0 +1,20 @@
+package com.sourjelly.springtest.mybatis.repository;
+
+import com.sourjelly.springtest.mybatis.domain.RealEstate;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
+
+@Mapper
+public interface RealEstateRepository {
+
+    // select 쿼리로 id 값을 입력받아 하나의 행을 가져와야징
+    public RealEstate selectRealEstate(@Param("id") int id);
+
+    //
+    public List<RealEstate> rentPriceSelect(@Param("rent") int rent);
+
+    //
+    public List<RealEstate> conditionSelect(@Param("area") int area, @Param("price") int price);
+}
