@@ -33,6 +33,12 @@ dependencies {
 
     //Thymeleaf 설정
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf'
+
+    //database 연동 mybatis사용할거다 정의
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:3.0.3'
 }
 
 tasks.named('test') {
