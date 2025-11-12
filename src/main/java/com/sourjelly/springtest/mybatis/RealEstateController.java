@@ -91,8 +91,19 @@ public class RealEstateController {
 
         int count = realEstateService.updateRealEstate(realEstate);
         return "수정 성공 : " + count;
-
     }
 
+    // 브라우저로 부터 받은 id의 데이터를 삭제하여 삭제 결과를 response에 담아 보여주기
+    @ResponseBody
+    @RequestMapping("/delete/1")
+    public String deleteTest01(@RequestParam("id") int id){
+        RealEstate realEstate = new RealEstate();
+
+        realEstate.setId(id);
+
+        int count = realEstateService.deleteRealEstate(realEstate);
+
+        return "삭제 성공 : " + count;
+    }
 
 }

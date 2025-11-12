@@ -58,4 +58,13 @@ public class RealEstateService {
 
 //        return realEstateRepository.updateRealEstateByObject(realEstate);
     }
+
+    public int deleteRealEstate(RealEstate realEstate){
+
+        int count = realEstateRepository.deleteRealEstateByObject(realEstate);
+
+        return count;
+    }
+
+
 }

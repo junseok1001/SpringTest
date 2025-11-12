@@ -32,4 +32,6 @@ public interface RealEstateRepository {
             );
 
     public int updateRealEstateByObject(RealEstate realEstate);
+
+    public int deleteRealEstateByObject(RealEstate realEstate);
 }

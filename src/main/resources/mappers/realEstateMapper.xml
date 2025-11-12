@@ -125,6 +125,14 @@
 
     </update>
 
+    <delete id="deleteRealEstateByObject"
+            parameterType="com.sourjelly.springtest.mybatis.domain.RealEstate">
+        DELETE FROM
+                   `real_estate`
+        WHERE
+            `id` = #{id}
+    </delete>
+
 
 
 </mapper>
