@@ -4,19 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sourjelly.springtest.mybatis.repository.RealEstateRepository">
-    <!-- 1번 문제-->
-    <select id="selectRealEstate"
+
+    <!-- 1번문제 -->
+    <select id="selectRealEstate" parameterType="int"
     resultType="com.sourjelly.springtest.mybatis.domain.RealEstate">
         SELECT
             `id`
-        ,   `realtor_id`
-        ,   `address`
-        ,   `area`
-        ,   `type`
-        ,   `price`
-        ,   `rent_price`
-        ,   `created_at`
-        ,   `updated_at`
+            , `realtor_id`
+            , `address`
+            , `area`
+            , `type`
+            , `price`
+            , `rent_price`
+            , `created_at`
+            , `updated_at`
         FROM
             `real_estate`
         WHERE
@@ -24,8 +25,8 @@
 
     </select>
 
-    <!-- 2번 문제-->
-    <select id="rentPriceSelect"
+    <!-- 2번 문제 -->
+    <select id="rentPriceSelect" parameterType="int"
     resultType="com.sourjelly.springtest.mybatis.domain.RealEstate">
 
         SELECT
@@ -41,21 +42,24 @@
         FROM
             `real_estate`
         WHERE
-            `rent_price` <![CDATA[<]]> 90
+            <![CDATA[
+            `tpye` = '월세'
+            `rent_price` < 90]]>
     </select>
 
+    <!-- 3번 문제 -->
     <select id="conditionSelect"
     resultType="com.sourjelly.springtest.mybatis.domain.RealEstate">
         SELECT
-            `id`
-        ,   `realtor_id`
-        ,   `address`
-        ,   `area`
-        ,   `type`
-        ,   `price`
-        ,   `rent_price`
-        ,   `created_at`
-        ,   `updated_at`
+              `id`
+            , `realtor_id`
+            , `address`
+            , `area`
+            , `type`
+            , `price`
+            , `rent_price`
+            , `created_at`
+            , `updated_at`
         FROM
             `real_estate`
         WHERE
