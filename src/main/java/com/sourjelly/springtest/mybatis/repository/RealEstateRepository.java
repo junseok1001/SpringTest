@@ -16,5 +16,20 @@ public interface RealEstateRepository {
     public List<RealEstate> rentPriceSelect(@Param("rent") int rent);
 
     //
-    public List<RealEstate> conditionSelect(@Param("area") int area, @Param("price") int price);
+    public List<RealEstate> conditionSelect(
+            @Param("area") int area
+            , @Param("price") int price);
+
+    public int insertRealEstateByObject(RealEstate realEstate);
+
+    public int insertRealEstateByParameter(
+            @Param("realtorId")int realtorId
+            ,@Param("address") String address
+            ,@Param("area") int area
+            ,@Param("type") String type
+            ,@Param("price") int price
+            ,@Param("rentPrice") int rentPrice
+            );
+
+    public int updateRealEstateByObject(RealEstate realEstate);
 }

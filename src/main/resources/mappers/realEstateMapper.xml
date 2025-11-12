@@ -48,7 +48,7 @@
     </select>
 
     <!-- 3번 문제 -->
-    <select id="conditionSelect"
+    <select id="conditionSelect" parameterType="map"
     resultType="com.sourjelly.springtest.mybatis.domain.RealEstate">
         SELECT
               `id`
@@ -63,8 +63,67 @@
         FROM
             `real_estate`
         WHERE
-            <![CDATA[`area` >=90 AND `price` <= 130000]]>
+            <![CDATA[
+            `area` >= #{area}
+          AND `price` <= #{price}
+          ]]>
     </select>
+
+    <insert id="insertRealEstateByObject"
+    parameterType="com.sourjelly.springtest.mybatis.domain.RealEstate">
+        INSERT INTO
+            `real_estate`
+        (
+            `realtor_id`
+            , `address`
+            , `area`
+            , `type`
+            , `price`
+        )
+        VALUE
+        (
+            #{realtorId}
+            , #{address}
+            , #{area}
+            , #{type}
+            , #{price}
+        )
+    </insert>
+
+    <insert id="insertRealEstateByParameter"
+    parameterType="map">
+        INSERT INTO
+            `real_estate`
+        (
+            `realtor_id`
+            , `address`
+            , `area`
+            , `type`
+            , `price`
+            , `rent_price`
+        )
+        VALUE
+        (
+            #{realtorId}
+            , #{address}
+            , #{area}
+            , #{type}
+            , #{price}
+            , #{rentPrice}
+        )
+
+    </insert>
+
+    <update id="updateRealEstateByObject"
+    parameterType="com.sourjelly.springtest.mybatis.domain.RealEstate">
+        UPDATE
+            `real_estate`
+        SET
+            `type` = #{type} , `price` = #{price}, `updated_at` = now()
+        WHERE
+            `id` = #{id}
+
+    </update>
 
 
 

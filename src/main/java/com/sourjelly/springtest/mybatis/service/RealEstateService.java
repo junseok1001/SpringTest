@@ -29,6 +29,33 @@ public class RealEstateService {
 
         List<RealEstate> realEstateList = realEstateRepository.conditionSelect(area,price);
         return realEstateList;
+    }
 
+    public int createRealEstateByObject(RealEstate realEstate){
+
+        int count = realEstateRepository.insertRealEstateByObject(realEstate);
+        return count;
+    }
+
+    public int createRealEstateByParameter(
+            int realtorId
+            , String address
+            , int area
+            , String type
+            , int price
+            , int rentPrice){
+        int count = realEstateRepository.insertRealEstateByParameter(realtorId, address, area, type, price, rentPrice);
+        return count;
+    }
+
+
+    // 값을 전달하여 real_estate 테이블의 행을 변화 시켜 실행한 쿼리 수를 리턴해준다.
+    public int updateRealEstate(RealEstate realEstate){
+
+          int count = realEstateRepository.updateRealEstateByObject(realEstate);
+
+          return count;
+
+//        return realEstateRepository.updateRealEstateByObject(realEstate);
     }
 }
