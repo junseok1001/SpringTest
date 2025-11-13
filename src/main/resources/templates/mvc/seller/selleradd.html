@@ -10,10 +10,12 @@
 
     <div class="container">
         <h2>판매자 추가</h2>
-        <label>닉네임</label><input class="form-control col-2" type="text">
-        <label>프로필 사진 url</label><input class="form-control col-10" type="text">
-        <label>온도</label><input class="form-control col-2" type="text">
-        <button class="btn btn-primary" type="button">추가</button>
+        <form method="post" action="/mvc/seller/addPage">
+            <label>닉네임</label><input class="form-control col-2" type="text" name="nickname">
+            <label>프로필 사진 url</label><input class="form-control col-10" type="text" name="profileImage">
+            <label>온도</label><input class="form-control col-2" type="text" name="temperature">
+            <button class="btn btn-primary" type="submit">추가</button>
+        </form>
     </div>
 
 </body>

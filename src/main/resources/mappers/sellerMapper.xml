@@ -20,4 +20,33 @@
         LIMIT 1
     </select>
 
+    <select id="selectIdSeller" parameterType="int"
+    resultType="com.sourjelly.springtest.mvc.domain.Seller">
+            SELECT
+                `id`
+                , `nickname`
+                , `temperature`
+                , `profile_image`
+            FROM
+                `seller`
+            WHERE
+                `id` = #{id}
+    </select>
+
+    <insert id="createSeller" parameterType="map">
+        INSERT INTO
+            `seller`
+        (   `nickname`
+            , `temperature`
+            , `profile_image`)
+        VALUE
+        (
+            #{nickname}
+            , #{temperature}
+            , #{profileImage}
+        )
+
+    </insert>
+
+
 </mapper>
