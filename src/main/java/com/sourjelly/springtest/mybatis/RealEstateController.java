@@ -67,7 +67,7 @@ public class RealEstateController {
     // 파마리터로 전달받은값에 해당 내용 넣고 결과 알려주기
     @ResponseBody
     @RequestMapping("/insert/2")
-    public String insertTest02(@RequestParam("realtorId")int realtorId){
+    public String insertTest02(@RequestParam("realtorId") int realtorId){
         String address = "썅떼빌리버 오피스텔 814호";
         int area = 45;
         String type = "월세";
@@ -94,6 +94,7 @@ public class RealEstateController {
     }
 
     // 브라우저로 부터 받은 id의 데이터를 삭제하여 삭제 결과를 response에 담아 보여주기
+    //
     @ResponseBody
     @RequestMapping("/delete/1")
     public String deleteTest01(@RequestParam("id") int id){
