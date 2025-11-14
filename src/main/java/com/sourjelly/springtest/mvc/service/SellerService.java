@@ -30,7 +30,7 @@ public class SellerService {
             , String profileImage
     ){
 
-        int count = sellerRepository.createSeller(nickname, temperature, profileImage);
+        int count = sellerRepository.insertSeller(nickname, temperature, profileImage);
 
         return count;
 

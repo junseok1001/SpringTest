@@ -5,10 +5,7 @@ import com.sourjelly.springtest.mvc.service.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/mvc/seller")
 @Controller
@@ -17,9 +14,9 @@ public class SellerController {
     @Autowired
     private SellerService sellerService;
 
-    @RequestMapping("/add")
+    @GetMapping("/add")
     public String addPage(){
-        return "/mvc/seller/selleradd";
+        return "mvc/seller/selleradd";
     }
 
     @ResponseBody
@@ -37,23 +34,18 @@ public class SellerController {
     }
 
     // 최근에 등록한 정보 response에 담기
-    @RequestMapping("/search")
-    public String sellerInfoPage(@RequestParam(value="id", required=false) String idString , Model model){
+    @GetMapping("/search")
+    public String sellerInfoPage(@RequestParam(value="id", required=false) Integer id , Model model){
 
-        int id = 0;
-        if(idString != null){
-            id = Integer.parseInt(idString);
-        }
+        Seller seller = null;
 
-        if(id == 0){
-            Seller seller = sellerService.getRencentSellerInfo();
-
-            model.addAttribute("sellerInfo", seller);
+        if(id == null){
+            seller = sellerService.getRencentSellerInfo();
         }else {
-            Seller seller = sellerService.getIdSeller(id);
-
-            model.addAttribute("sellerInfo", seller);
+            seller = sellerService.getIdSeller(id);
         }
+
+        model.addAttribute("sellerInfo", seller);
 
         return "/mvc/seller/sellerInfo";
     }

@@ -11,7 +11,7 @@
     <div class="container">
         <form method="get" action="/mvc/seller/search">
         <h2>판매자 정보</h2>
-        <img width="180" height="250" th:src="${sellerInfo.profileImage}">
+        <img width="200" th:src="${sellerInfo.profileImage}" src="https://pixabay.com/ko/vectors/image-9901012/">
         <div th:text="${sellerInfo.nickname}">판매자 이름</div>
         <div class="text-warning" th:text="${sellerInfo.temperature}">판매자 온도</div>
         </form>

@@ -11,7 +11,7 @@ public interface SellerRepository {
 
     public Seller selectIdSeller(@Param("id") int id);
 
-    public int createSeller(
+    public int insertSeller(
             @Param("nickname") String nickname
             , @Param("temperature") double temperature
             , @Param("profileImage") String profileImage

@@ -13,6 +13,8 @@
             , `nickname`
             , `temperature`
             , `profile_image`
+            , `created_at`
+            , `updated_at`
         FROM
             `seller`
         ORDER BY
@@ -33,7 +35,7 @@
                 `id` = #{id}
     </select>
 
-    <insert id="createSeller" parameterType="map">
+    <insert id="insertSeller" parameterType="map">
         INSERT INTO
             `seller`
         (   `nickname`
