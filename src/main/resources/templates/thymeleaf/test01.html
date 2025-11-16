@@ -22,8 +22,8 @@
     <div th:utext="'<b>안녕하세요</b>'"></div>
 
     <h3>4. if 와 unless</h3>
-    <h3 th:if="${}"></h3>
-    <h1 th:unless="${}"></h1>
+    <h3 th:if="${(number1 + number2)/2 >= 10}" th:text="${(number1 + number2)/2.0}"> </h3>
+    <h1 th:unless="${(number1 + number2)/2 >= 10}" th:text="${(number1 + number2)/2.0}"></h1>
 
     </th:block>
 </body>
