@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>thymeleaf 반복문 연습문제</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+</head>
+<body>
+
+
+    <div class="container">
+        <h3>HOT 5</h3>
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th>순위</th>
+                    <th>제목</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="text-center" th:each="musicRank, status : ${musicList}">
+                    <th th:text="${status.count}"></th>
+                    <td th:text="${musicRank}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>멤버십</h3>
+        <table class="table">
+            <thead>
+            <tr class="text-center">
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>등급</th>
+                <th>포인트</th>
+            </tr>
+            </thead>
+            <!-- name, phoneNumber, grade , point -->
+            <tbody>
+            <tr class="text-center" th:each="member:${memberInfo}">
+                <td th:text="${member.name}">가렌</td>
+                <td th:text="${member.phoneNumber}">010-1111-2222</td>
+                <th:block th:with="grade = ${member.grade}, point = ${member.point} ">
+                    <th:block th:switch="${grade}">
+                        <td th:case="VIP"  th:text="${grade}" class="text-danger">VIP</td>
+                        <td th:case="GOLD"  th:text="${grade}" class="text-warning">VIP</td>
+                        <td th:case="*"  th:text="${grade}">VIP</td>
+                    </th:block>
+                    <td th:if="${point >= 5000}" th:text="${point}" class="text-primary">12000</td>
+                    <td th:unless="${point >= 5000}" th:text="${point}">12000</td>
+                </th:block>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>

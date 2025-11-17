@@ -21,6 +21,6 @@
                 , #{phoneNumber}
                 , #{address}
                 , #{grade}
-            );
+            )
     </insert>
 </mapper>
