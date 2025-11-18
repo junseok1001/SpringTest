@@ -1,6 +1,9 @@
 package com.sourjelly.springtest.thymeleaf;
 
 
+import com.sourjelly.springtest.thymeleaf.domain.Weather;
+import com.sourjelly.springtest.thymeleaf.service.WeatherService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -142,9 +145,24 @@ public class ThymeleafController {
         return "thymeleaf/test03";
     }
 
+    @Autowired
+    private WeatherService weatherService;
+
     @GetMapping("/weatherMain")
-    public String weatherMain(){
+    public String weatherMain(Model model){
+
+        List<Weather> weatherList = weatherService.searchTable();
+        model.addAttribute("weatherList", weatherList);
+
+
         return "thymeleaf/weather/mainpage";
+    }
+
+    @GetMapping("/weatherInput")
+    public String weatherInputPage(){
+
+
+        return "thymeleaf/weather/weatherInput";
     }
 
 }

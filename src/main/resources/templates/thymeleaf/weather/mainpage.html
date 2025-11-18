@@ -9,17 +9,67 @@
 </head>
 <body>
 
-    <div id="wrap"  class="bg-success">
+    <div id="wrap"  class="mt-1">
         <div class="d-flex">
-            <div>
-                <header class="bg-primary">
-                    <img>
+            <div >
+                <header class=" d-flex align-items-center justify-content-center">
+                    <div class="d-flex">
+                        <img height="33" alt="메인 로고" src="http://marondal.com/material/images/dulumary/web/jstl/weather-logo.png">
+                        <h3>기상청</h3>
+                    </div>
                 </header>
-                <nav class="menu bg-dark"></nav>
+                <nav class="menu">
+                    <ul class="nav flex-column">
+                        <li class="nav-item"><a class="nav-link text-white" href="#">날씨</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">날씨입력</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">테마날씨</a></li>
+                        <li class="nav-item"><a class="nav-link text-white" href="#">관측기후</a></li>
+                    </ul>
+                </nav>
             </div>
-        <section class="main bg-info"></section>
+        <section class="main pt-3 pl-5">
+            <h3>과거 날씨</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>날짜</th>
+                        <th>날씨</th>
+                        <th>기온</th>
+                        <th>강수량</th>
+                        <th>미세먼지</th>
+                        <th>풍속</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="weathers : ${weatherList}">
+                        <td th:text="${#dates.format(weathers.date, 'yyyy년 MM월 dd일' )}">2015년 11월 18일</td>
+                        <td th:with="weather =${weathers.weather}" >
+                            <img th:if="${weather} == '맑음'"  src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
+                            <img th:if="${weather} == '구름조금'"  src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">
+                            <img th:if="${weather} == '흐림'"  src="http://marondal.com/material/images/dulumary/web/jstl/cloudy.jpg">
+                            <img th:if="${weather} == '비'"  src="http://marondal.com/material/images/dulumary/web/jstl/rainy.jpg">
+                        </td>
+                        <td th:text="|${weathers.temperatures}'℃'|">18.5도℃</td>
+                        <td th:text="|${weathers.precipitation}mm|">99.5mm</td>
+                        <td th:text="${weathers.microDust}">보통</td>
+                        <td th:text="|${weathers.windSpeed}km/h|">12.9km/h</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
         </div>
-        <footer class="bg-danger"></footer>
+        <hr>
+        <footer class="d-flex">
+            <div class="bottom-logo d-flex justify-content-center align-items-center ">
+                <img height="45" alt="메인 로고" src="http://marondal.com/material/images/dulumary/web/jstl/weather-footer.png">
+            </div>
+            <div class="copyright">
+                <div class="copyright-text p-3 ">
+                    (07062) 서울시 동작구 여의대방로16길 61 <br>
+                    Copyright@2020 KMA. All Rights RESERVED.
+                </div>
+            </div>
+        </footer>
     </div>
 
 </body>

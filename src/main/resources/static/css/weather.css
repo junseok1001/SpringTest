@@ -1,23 +1,34 @@
 #wrap{
     width:1200px;
-    height:900px;
     margin: 0 auto;
 }
 
 header{
     width:200px;
-    height: 100px;
+    height:50px;
+    background-color:rgb(100,149,236);
 }
 
 .menu{
     width:200px;
-    height:700px;
+    height:90%;
+    background-color:rgb(100,149,236);
 }
 .main{
     width:1000px;
-    height:800px;
 }
 
-footer{
+
+footer > .bottom-logo{
+    width:200px;
     height:100px;
+}
+
+footer > .copyright{
+    width:1000px;
+    height:100px;
+}
+
+.copyright > .copyright-text{
+    color:rgb(191,191,191);
 }
