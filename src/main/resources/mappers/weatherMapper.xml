@@ -8,7 +8,7 @@
     resultType="com.sourjelly.springtest.thymeleaf.domain.Weather">
         SELECT
             `id`
-            , `date`
+             , `date`
             , `weather`
             , `temperatures`
             , `precipitation`
@@ -16,7 +16,28 @@
             , `wind_speed`
         FROM
             `weatherhistory`
-        ORDER BY
-            `id`
     </select>
+
+    <insert id="insertWeatherTable" parameterType="map">
+                INSERT INTO
+                    `weatherhistory`
+                (
+                     `date`
+                    , `weather`
+                    , `temperatures`
+                    , `precipitation`
+                    , `micro_dust`
+                    , `wind_speed`
+                )
+                VALUE
+                (
+                    #{date}
+                    , #{weather}
+                    , #{temperatures}
+                    , #{precipitation}
+                    , #{microDust}
+                    , #{windSpeed}
+                )
+    </insert>
+
 </mapper>

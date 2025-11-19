@@ -3,19 +3,23 @@
     margin: 0 auto;
 }
 
-header{
+.logo{
     width:200px;
-    height:50px;
-    background-color:rgb(100,149,236);
+    height:75px;
 }
 
 .menu{
     width:200px;
-    height:90%;
-    background-color:rgb(100,149,236);
 }
 .main{
     width:1000px;
+}
+.sidebar{
+    background-color:rgb(100,149,236);
+}
+
+.logo-text{
+    font-size:25px;
 }
 
 
