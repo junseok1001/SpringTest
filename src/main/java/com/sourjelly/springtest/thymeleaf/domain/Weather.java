@@ -1,12 +1,16 @@
 package com.sourjelly.springtest.thymeleaf.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Weather {
 
     private int id;
-    private Date date;
+    @DateTimeFormat(pattern = "yyyy년 M월 d일")
+    private LocalDate date;
     private String weather;
     private double temperatures;
     private double precipitation;
@@ -23,11 +27,11 @@ public class Weather {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

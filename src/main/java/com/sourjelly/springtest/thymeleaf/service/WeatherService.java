@@ -5,6 +5,7 @@ import com.sourjelly.springtest.thymeleaf.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -23,7 +24,7 @@ public class WeatherService {
 
     // weather 테이블에 데이터 넣을거 넘기기
     public int insertWeatherByParam(
-            String date
+            LocalDate date
             , String weather
             , double temperatures
             , double precipitation
@@ -35,6 +36,11 @@ public class WeatherService {
                 date, weather, temperatures, precipitation, microDust, windSpeed);
 
             return count;
+    }
+
+    public int createWeatherByObject(Weather weather){
+        int count = weatherRepository.insertWeatherByObject(weather);
+        return count;
     }
 
 }

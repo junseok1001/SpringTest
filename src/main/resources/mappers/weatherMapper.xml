@@ -40,4 +40,28 @@
                 )
     </insert>
 
+    <insert id="insertWeatherByObject"
+    parameterType="com.sourjelly.springtest.thymeleaf.domain.Weather">
+        INSERT INTO
+            `weatherhistory`
+        (
+              `date`
+            , `weather`
+            , `temperatures`
+            , `precipitation`
+            , `micro_dust`
+            , `wind_speed`
+        )
+            VALUE
+            (
+                #{date}
+                , #{weather}
+                , #{temperatures}
+                , #{precipitation}
+                , #{microDust}
+                , #{windSpeed}
+            )
+
+    </insert>
+
 </mapper>
