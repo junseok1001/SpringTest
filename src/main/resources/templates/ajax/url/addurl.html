@@ -11,16 +11,60 @@
     <div class="container">
         <h3>즐겨 찾기 추가</h3>
         <label>제목</label>
-        <input class="form-control my-2" type="text">
+        <input id="name" class="form-control my-2" type="text">
         <label>주소</label>
-        <input class="form-control my-2" type="text">
-        <button class="btn btn-success w-100">추가</button>
+        <input id="url" class="form-control my-2" type="text">
+        <button id="addBtn" class="btn btn-success w-100">추가</button>
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
+        $("#addBtn").on("click", function(){
+            let name = $("#name").val();
+            let url =$("#url").val();
 
+            console.log($("#name").val());
+            console.log($("#url").val());
+
+            if(name == ""){
+                alert("제목을 입력하세요");
+                return;
+            }
+
+            if(url == ""){
+                alert("url을 입력하세요");
+                return;
+            }
+
+            if(!url.startsWith("https://")){
+                alert("정확한 url을 입력하세요");
+                return;
+            }
+
+            if(!url.startsWith("http://")){
+                alert("정확한 url을 입력하세요");
+                return;
+            }
+
+
+            $.ajax({
+                type:"get"
+                , url:"/ajax/url/Api"
+                , data:{"name":name, "url":url}
+                , success:function(response) {
+                    if(response.result == "success") {
+                        window.location.href='/ajax/url/form'
+                    }else {
+                        alert("입력 실패");
+                    }
+                }
+                , error:function(){
+                    alert("에러");
+                }
+            });
+
+        });
     </script>
 
 </body>

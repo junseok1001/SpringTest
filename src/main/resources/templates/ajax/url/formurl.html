@@ -20,18 +20,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>야후</td>
-                    <td>http://yahuo.com</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>네이버</td>
-                    <td>http://naver.com</td>
+                <tr th:each="urls : ${urlList}">
+                    <td th:text="${urls.id}">1</td>
+                    <td th:text="${urls.name}">야후</td>
+                    <td th:text="${urls.url}">http://yahuo.com</td>
                 </tr>
             </tbody>
-
         </table>
 
     </div>
