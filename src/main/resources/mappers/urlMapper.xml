@@ -13,6 +13,15 @@
         FROM `url`
     </select>
 
+    <select id="isDuplicateUrl" parameterType="string"
+    resultType="int">
+        SELECT
+            count(*)
+        FROM
+            `url`
+        WHERE `url` = #{url}
+    </select>
+
     <insert id="insertUrl" parameterType="map">
         INSERT INTO
         `url`
@@ -23,5 +32,11 @@
             , #{url}
         )
     </insert>
+
+    <delete id="removeUrl" parameterType="int">
+        DELETE FROM
+                   `url`
+        WHERE `id`= #{id};
+    </delete>
 
 </mapper>

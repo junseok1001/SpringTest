@@ -13,19 +13,58 @@
         <label>제목</label>
         <input id="name" class="form-control my-2" type="text">
         <label>주소</label>
-        <input id="url" class="form-control my-2" type="text">
-        <button id="addBtn" class="btn btn-success w-100">추가</button>
+        <div class="d-flex my-2">
+            <input id="urlInput" class="form-control col-11" type="text">
+            <button id="isDuplicateBtn" class="btn btn-info col-1 mx-3 " type="button">중복확인</button>
+        </div>
+        <div id="isDuplicateText" class="small text-danger d-none">중복된 주소입니다.</div>
+        <button id="addBtn" class="btn btn-success btn-block">추가</button>
 
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
+        $("#isDuplicateBtn").on("click", function(){
+            let url =$("#urlInput").val();
+
+            if(url == ""){
+                alert("주소를 입력하세요");
+                return;
+            }
+
+            $.ajax({
+                type:"get"
+                , url:"/ajax/url/duplicate-url"
+                , data:{"url":url}
+                , success:function(response){
+                    if(response.result){
+                        // 중복되어 있지 않으면
+                        // {"result", true}
+                        if(!$("#isDuplicateText").hasClass("d-none")){
+                            $("#isDuplicateText").addClass("d-none")
+                        }
+                    }else{
+                        if($("#isDuplicateText").hasClass("d-none")){
+                            $("#isDuplicateText").removeClass("d-none")
+                        }
+                    }
+
+                }
+                , error: function(){
+                    alert("중복 에러");
+                }
+            });
+
+
+        });
+
+
         $("#addBtn").on("click", function(){
             let name = $("#name").val();
-            let url =$("#url").val();
+            let url =$("#urlInput").val();
 
             console.log($("#name").val());
-            console.log($("#url").val());
+            console.log($("#urlInput").val());
 
             if(name == ""){
                 alert("제목을 입력하세요");
@@ -37,15 +76,11 @@
                 return;
             }
 
-            if(!url.startsWith("https://")){
+            if(!url.startsWith("https://") && !url.startsWith("http://")){
                 alert("정확한 url을 입력하세요");
                 return;
             }
 
-            if(!url.startsWith("http://")){
-                alert("정확한 url을 입력하세요");
-                return;
-            }
 
 
             $.ajax({

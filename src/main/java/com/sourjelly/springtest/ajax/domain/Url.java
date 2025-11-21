@@ -1,10 +1,30 @@
 package com.sourjelly.springtest.ajax.domain;
 
+import java.time.LocalDateTime;
+
 public class Url {
 
     private int id;
     private String name;
     private String url;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public LocalDateTime getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(LocalDateTime updatedAt) {
+        this.updatedAt = updatedAt;
+    }
 
     public int getId() {
         return id;

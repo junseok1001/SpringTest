@@ -42,7 +42,7 @@
                 </thead>
                 <tbody>
                     <tr th:each="weathers : ${weatherList}">
-                        <td th:text="${#dates.format(weathers.date, 'yyyy년 M월 d일' )}">2015년 11월 18일</td>
+                        <td th:text="${#temporals.format(weathers.date, 'yyyy년 MM월 dd일' )}">2015년 11월 18일</td>
                         <td th:with="weather =${weathers.weather}" >
                             <img th:if="${weather} == '맑음'"  src="http://marondal.com/material/images/dulumary/web/jstl/sunny.jpg">
                             <img th:if="${weather} == '구름조금'"  src="http://marondal.com/material/images/dulumary/web/jstl/partlyCloudy.jpg">

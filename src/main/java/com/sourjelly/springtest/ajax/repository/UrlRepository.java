@@ -15,5 +15,8 @@ public interface UrlRepository {
              @Param("name") String name
             ,@Param("url") String url);
 
+    public int isDuplicateUrl(@Param("url") String url);
+
+    public int removeUrl(@Param("id") int id);
 
 }

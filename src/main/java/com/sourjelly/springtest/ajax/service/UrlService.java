@@ -29,4 +29,30 @@ public class UrlService {
         return count;
 
     }
+
+    // url 테이블에서 중복되어 있지 않으면 false 중복되어 있으면 true
+    public boolean isDuplicateUrl(String url){
+
+        int count = urlRepository.isDuplicateUrl(url);
+
+        if(count == 0){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    public boolean deleteUrl(int id){
+
+        int count = urlRepository.removeUrl(id);
+
+        if(count== 0){
+            // 삭제되지 않음
+            return false;
+        }else{
+            // 삭제 됨
+            return true;
+        }
+
+    }
 }

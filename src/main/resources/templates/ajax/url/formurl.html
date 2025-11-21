@@ -17,18 +17,28 @@
                     <th>NO.</th>
                     <th>이름</th>
                     <th>주소</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-                <tr th:each="urls : ${urlList}">
-                    <td th:text="${urls.id}">1</td>
+                <tr th:each="urls , status : ${urlList}">
+                    <td th:text="${status.count}">1</td>
                     <td th:text="${urls.name}">야후</td>
                     <td th:text="${urls.url}">http://yahuo.com</td>
+                    <td><button class="removeBtn btn btn-danger">삭제</button></td>
                 </tr>
             </tbody>
         </table>
 
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(".removeBtn").on("click", function(){
+            let id = $(this).val();
 
+            alert(id);
+
+        });
+    </script>
 </body>
 </html>
