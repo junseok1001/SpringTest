@@ -25,7 +25,7 @@
                     <td th:text="${status.count}">1</td>
                     <td th:text="${urls.name}">야후</td>
                     <td th:text="${urls.url}">http://yahuo.com</td>
-                    <td><button class="removeBtn btn btn-danger">삭제</button></td>
+                    <td><button th:value="${urls.id}" class="removeBtn btn btn-danger">삭제</button></td>
                 </tr>
             </tbody>
         </table>
@@ -36,7 +36,27 @@
         $(".removeBtn").on("click", function(){
             let id = $(this).val();
 
-            alert(id);
+            $.ajax({
+                type:"get"
+                , url:"/ajax/url/remove"
+                ,data:{"id":id}
+                ,success:function(response){
+                    if(response.remove){
+                        // 삭제됨
+                        // {"remove": true}
+                        location.href="/ajax/url/form";
+
+                    }else{
+                        alert(" 삭제 실패 관리자한테 문의하세요");
+                    }
+
+                    // 삭제 안됨
+                    // {"remove": false}
+                }
+                ,error:function(){
+                    alert("제거 에러");
+                }
+            });
 
         });
     </script>
