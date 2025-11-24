@@ -19,5 +19,9 @@ public interface PensionRepository {
     // 정보를 db에 저장
     public int insertBooking(Booking booking);
 
+    public Booking selectBooking(
+            @Param("name") String name
+            ,@Param("phoneNumber") String phoneNumber);
+
 
 }

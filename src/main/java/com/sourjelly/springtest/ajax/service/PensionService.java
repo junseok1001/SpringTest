@@ -35,7 +35,15 @@ public class PensionService {
     // 데이터베이스에 해당 정보들을 넣는 서비스
     public int insertBooking(Booking booking){
 
+        int count = pensionRepository.insertBooking(booking);
 
+        return count;
+    }
+
+    // 전달받은 정보를 기준으로 booking 테이블에서 조회 한다.
+    public Booking selectBooking(String name, String phoneNumber){
+        Booking booking = pensionRepository.selectBooking(name, phoneNumber);
+        return booking;
     }
 
 

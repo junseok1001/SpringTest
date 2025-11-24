@@ -63,9 +63,22 @@ public class PensionController {
 
     //view 로 부터 전달받은 값을 저장하기
     @PostMapping("/input")
+    @ResponseBody
     public int inputInfo(@ModelAttribute Booking booking){
+        int count = pensionService.insertBooking(booking);
 
+        return count;
+    }
 
+    // 조회할 정보를 파라미터로 전달받음
+    @PostMapping("/select")
+    @ResponseBody
+    public Booking findInfo(
+            @RequestParam("name") String name
+            ,@RequestParam("phoneNumber")  String phoneNumber){
+        Booking booking =  pensionService.selectBooking(name, phoneNumber);
+
+        return booking;
     }
 
 }
