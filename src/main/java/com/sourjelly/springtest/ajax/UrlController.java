@@ -78,13 +78,16 @@ public class UrlController {
         return isDuplicate;
     }
 
+
+    // 특정한 하나의 즐겨찾기 삭제 API
     // 아이디를 입력받아 삭제성공, 실패를 JSON 문자열에 담기
     @GetMapping("/remove")
     @ResponseBody
     public Map<String, Boolean> removeItem(@RequestParam("id") int id){
 
         Map<String, Boolean> result = new HashMap<>();
-        if(urlService.deleteUrl(id)){
+        int count = urlService.deleteUrl(id);
+        if(count == 1){
             // 삭제됨
             // {"remove": true}
             result.put("remove", true);

@@ -18,6 +18,7 @@
             <button id="isDuplicateBtn" class="btn btn-info col-1 mx-3 " type="button">중복확인</button>
         </div>
         <div id="isDuplicateText" class="small text-danger d-none">중복된 주소입니다.</div>
+        <div id="noDuplicateText" class="small text-primary d-none">사용 가능한 URL 입니다.</div>
         <button id="addBtn" class="btn btn-success btn-block">추가</button>
 
     </div>
@@ -26,6 +27,11 @@
     <script>
         $("#isDuplicateBtn").on("click", function(){
             let url =$("#urlInput").val();
+
+            if(!url.startsWith("https://") && !url.startsWith("http://")){
+                alert("정확한 url을 입력하세요");
+                return;
+            }
 
             if(url == ""){
                 alert("주소를 입력하세요");
@@ -43,9 +49,15 @@
                         if(!$("#isDuplicateText").hasClass("d-none")){
                             $("#isDuplicateText").addClass("d-none")
                         }
+                        if($("#noDuplicateText").hasClass("d-none")){
+                            $("#noDuplicateText").removeClass("d-none")
+                        }
                     }else{
                         if($("#isDuplicateText").hasClass("d-none")){
                             $("#isDuplicateText").removeClass("d-none")
+                        }
+                        if(!$("#noDuplicateText").hasClass("d-none")){
+                            $("#noDuplicateText").addClass("d-none")
                         }
                     }
 

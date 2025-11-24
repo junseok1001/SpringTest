@@ -35,24 +35,29 @@ public class UrlService {
 
         int count = urlRepository.isDuplicateUrl(url);
 
-        if(count == 0){
-            return false;
-        }else{
-            return true;
-        }
+
+        return count != 0;
+//        if(count == 0){
+//            //중복 안됌
+//            return false;
+//        }else{
+//            // 중복 됌
+//            return true;
+//        }
     }
 
-    public boolean deleteUrl(int id){
+    public int deleteUrl(int id){
 
         int count = urlRepository.removeUrl(id);
 
-        if(count== 0){
-            // 삭제되지 않음
-            return false;
-        }else{
-            // 삭제 됨
-            return true;
-        }
+//        if(count== 0){
+//            // 삭제되지 않음
+//            return false;
+//        }else{
+//            // 삭제 됨
+//            return true;
+//        }
+        return count;
 
     }
 }

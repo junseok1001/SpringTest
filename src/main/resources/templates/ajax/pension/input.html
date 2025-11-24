@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>통나무 펜션 예약하기</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/pension/style.css">
+</head>
+<body>
+<div id="wrap">
+    <header class="d-flex justify-content-center align-items-center">
+        <div class="display-4">통나무 펜션</div>
+    </header>
+    <nav class="main-menu">
+        <ul class="nav nav-fill font-weight-bold">
+            <li class="nav-item"><a href="#" class="nav-link text-white">펜션소개</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">객실보기</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">예약안내</a></li>
+            <li class="nav-item"><a href="#" class="nav-link text-white">커뮤니티</a></li>
+        </ul>
+    </nav>
+    <section class="contents">
+        <div class="input">
+            <div class="d-flex justify-content-center align-items-center">
+                <h2>예약하기</h2>
+            </div>
+            <label>이름</label>
+            <input id="nameInput" type="text" class="form-control mb-2">
+
+            <label>예약날짜</label>
+            <input  type="text" id="dateInput" class="form-control mb-2">
+
+            <label>숙박일수</label>
+            <input id="dayInput" type="text" class="form-control mb-2">
+
+            <label>숙박인원</label>
+            <input id="headcountInput" type="text" class="form-control mb-2">
+
+            <label>전화번호</label>
+            <input id="phoneNumberInput" type="text" class="form-control mb-2">
+
+            <button id="inputBtn" type="button" class="btn btn-warning w-100">예약하기</button>
+        </div>
+    </section>
+    <footer class="mt-3">
+        <div class="small text-secondary">
+            제주특별자치도 제주시 애월읍  <br>
+            사업자등록번호: 111-22-255222 / 농어촌민박사업자지정 / 대표:김통목 <br>
+            Copyright 2025 tongnamu All right reserved
+        </div>
+    </footer>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+<script>
+    $("#dateInput").datepicker({
+        dateFormat:"yy년 mm월 dd일",
+        minDate: 0
+    });
+
+    $("#inputBtn").on("click", function(){
+
+    });
+
+
+</script>
+</body>
+</html>
