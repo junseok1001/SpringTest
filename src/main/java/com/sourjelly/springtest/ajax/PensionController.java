@@ -71,14 +71,54 @@ public class PensionController {
     }
 
     // 조회할 정보를 파라미터로 전달받음
+    // response body에서 만약 booking 이 비어있는것을 주면 responseboy를 받은 페이지는 그냥 아무것도 응답에 담지 않는다.
+    // 그럼 기준이 엄청 모호 해지기 때문에 내가 명확하게 담아서 줘야한다.
     @PostMapping("/select")
     @ResponseBody
-    public Booking findInfo(
+    public Map<String, Object> findInfo(
             @RequestParam("name") String name
             ,@RequestParam("phoneNumber")  String phoneNumber){
         Booking booking =  pensionService.selectBooking(name, phoneNumber);
 
-        return booking;
+
+
+        // 응답에 담을 JSON 문자열을  생성
+        // JSON 문자열 만드는 방법
+        // 1. 내가 직접 만들기 이게 맞는듯.
+        // 2. 객체를 responsebody에 담기 그러면 spring에 의해서 json 문자열로 변환.(단 JSON 문자열로 변환할때 값들이 비어져 있다면, responsebody에는 아무것도 안보낸다.)
+
+        // 내가 직접 만든다 성공시 결과에 객체를 담고 실패시 null을 담는다.
+        // {"name":강하늘, "day":2, "headcount":2}
+        Map<String, Object> bookingMap = new HashMap<>();
+
+        if(booking != null){
+            // 성공시 {"result":"success"}
+            bookingMap.put("result", "success");
+            bookingMap.put("booking", booking);
+            return bookingMap;
+
+        }else{
+            // 실패시 {"result":"fail"}
+            bookingMap.put("result", "fail");
+            return bookingMap;
+        }
+
+//        if(booking != null){
+//            // 성공시 {"result":"success"}
+//
+//            bookingMap.put("result", "success");
+//            bookingMap.put("name", booking.getName());
+//            bookingMap.put("date", booking.getDate() + "");
+//            bookingMap.put("day", booking.getDay() + "");
+//            bookingMap.put("headcount", booking.getHeadcount() + "");
+//            bookingMap.put("state", booking.getState());
+//            return bookingMap;
+//        }else{
+//            // 실패시 {"result":"fail"}
+//            bookingMap.put("result", "fail");
+//            return bookingMap;
+//        }
+
     }
 
 }

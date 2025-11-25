@@ -66,7 +66,6 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
 <script>
 
     var imageList = [
@@ -78,14 +77,14 @@
 
     var index = 0;
 
-    setInterval(function() {
-        index++;
-        if(index == imageList.length) {
-            index = 0;
-        }
-
-        $("#banner").attr("src", imageList[index]);
-    }, 3000);
+    // setInterval(function() {
+    //     index++;
+    //     if(index == imageList.length) {
+    //         index = 0;
+    //     }
+    //
+    //     $("#banner").attr("src", imageList[index]);
+    // }, 3000);
 
 
     $("#searchBtn").on("click", function() {
@@ -112,14 +111,38 @@
             , data:{"name":name, "phoneNumber":phoneNumber}
             , success : function(response){
                 console.log(response);
-                if(response != ""){
-                    alert("이름: " + response.name +"\n" +
-                        "날짜 : " + response.date+ "\n" +
-                        "일수 : " + response.day + "\n" +
-                        "인원 : " + response.headcount + "\n" +
-                        "상태 : " + response.state);
-                }else{
+                // if(response.result !=  "success"){
+                //     alert("정보가 없습니다");
+                // }else{
+                //     let name = response.name;
+                //     let date = response.date;
+                //     let day = response.day;
+                //     let headcount = response.headcount;
+                //     let state = response.state;
+                //
+                //     // aplication Json으로 받았을때 그럼 객체를 전달받아서 그런건데... 객체를 전달받는건 맵이네
+                //     alert("이름: " + name +"\n" +
+                //         "날짜 : " + date+ "\n" +
+                //         "일수 : " + day + "\n" +
+                //         "인원 : " + headcount + "\n" +
+                //         "상태 : " + state);
+                // }
+
+                if(response.result ==  "fail"){
                     alert("정보가 없습니다");
+                }else{
+                    let name = response.booking.name;
+                    let date = response.booking.date;
+                    let day = response.booking.day;
+                    let headcount = response.booking.headcount;
+                    let state = response.booking.state;
+
+                    // aplication Json으로 받았을때 그럼 객체를 전달받아서 그런건데... 객체를 전달받는건 맵이네
+                    alert("이름: " + name +"\n" +
+                        "날짜 : " + date+ "\n" +
+                        "일수 : " + day + "\n" +
+                        "인원 : " + headcount + "\n" +
+                        "상태 : " + state);
                 }
 
 
