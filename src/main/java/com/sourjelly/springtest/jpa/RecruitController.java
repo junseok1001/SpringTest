@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -92,10 +95,16 @@ public class RecruitController {
 
 
     //조회문제 7번
-//    @GetMapping("/searchQuery")
-//    @ResponseBody
-//    public List<Recruit> searchQuery()  {
-//
-//    }
+    @GetMapping("/searchQuery")
+    @ResponseBody
+    public List<Recruit> searchQuery()  {
+
+
+
+        List<Recruit> recruitList = recruitRepository.selectComplex("정규직", "2026-04-10", 8100);
+
+
+        return recruitList;
+    }
 
 }
