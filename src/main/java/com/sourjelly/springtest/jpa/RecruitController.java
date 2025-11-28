@@ -66,7 +66,7 @@ public class RecruitController {
     @ResponseBody
     public List<Recruit> searchByEach() {
 
-        List<Recruit> recruitList = recruitRepository.findByTypeOrSalaryGreaterThan("정규직", 9000);
+        List<Recruit> recruitList = recruitRepository.findByTypeOrSalaryGreaterThanEqual("정규직", 9000);
 
         return recruitList;
     }
@@ -99,9 +99,7 @@ public class RecruitController {
     @ResponseBody
     public List<Recruit> searchQuery()  {
 
-
-
-        List<Recruit> recruitList = recruitRepository.selectComplex("정규직", "2026-04-10", 8100);
+        List<Recruit> recruitList = recruitRepository.selectComplex("정규직", LocalDateTime.of(2026, 4, 9, 23,59,59) , 8100);
 
 
         return recruitList;
